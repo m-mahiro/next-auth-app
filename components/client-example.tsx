@@ -41,7 +41,7 @@ export default function ClientExample() {
           {status === 'loading' ? <div>Loading...</div> : JSON.stringify(session, null, 2)}
         </pre>
       </div>
-      {status==='unauthenticated' && <Button onClick={() => signOut()} className="w-60 y-20">ClientSide SignOuting</Button>}
+      {session && <Button onClick={() => signOut()} className="w-60 y-20">ClientSide SignOuting</Button>}
     </div>
   );
 }
