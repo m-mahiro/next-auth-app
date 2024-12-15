@@ -1,11 +1,12 @@
 "use client"
 
 import CustomLink from "./custom-link";
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
+import { Button } from "./ui/button";
 
 export default function ClientExample() {
 
-  const { data: session, status } =  useSession();
+  const { data: session, status } = useSession();
 
   return (
     <div className="flex flex-col gap-4">
@@ -40,6 +41,7 @@ export default function ClientExample() {
           {status === 'loading' ? <div>Loading...</div> : JSON.stringify(session, null, 2)}
         </pre>
       </div>
+      {status==='unauthenticated' && <Button onClick={() => signOut()} className="w-60 y-20">ClientSide SignOuting</Button>}
     </div>
   );
 }

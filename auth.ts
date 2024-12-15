@@ -6,7 +6,7 @@ const config: NextAuthConfig = {
 	theme: {
     logo: "https://next-auth.js.org/img/logo/logo-sm.png",
 	},
-	providers: [GitHub, Google],
+	providers: [GitHub, Google()],
 	basePath: '/api/auth',
 	callbacks: {
 		authorized({ request, auth }) {
