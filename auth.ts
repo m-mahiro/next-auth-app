@@ -1,14 +1,18 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import GitHub from "next-auth/providers/github";
+import Google from "next-auth/providers/google";
 
-export const config: NextAuthConfig = {
-	providers: [GitHub],
+const config: NextAuthConfig = {
+	theme: {
+    logo: "https://next-auth.js.org/img/logo/logo-sm.png",
+	},
+	providers: [GitHub, Google],
 	basePath: '/api/auth',
 	callbacks: {
 		authorized({ request, auth }) {
 			try {
 				const { pathname } = request.nextUrl;
-				if (pathname === '/app/secret') return !!auth;
+				if (pathname === '/secret') return !!auth;
 				return true;
 			} catch (err) {
 				console.log(err);
